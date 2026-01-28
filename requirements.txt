@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pytesseract
+opencv-python
+pdf2image
+pandas
+openai>=1.0.0
+python-multipart
+pydantic

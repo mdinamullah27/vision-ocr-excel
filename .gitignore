@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.egg-info/
+*.egg
+*.env
+venv/
+ENV/
+env/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# FastAPI / Logs
+*.log
+*.sqlite3
+
+# Temporary folders
+temp/uploads/
+temp/images/
+temp/outputs/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Excel / output files
+*.xlsx
+*.xls
+
+# PDF uploads
+*.pdf
+
+# PyTorch / Torch model cache
+*.pt
+*.pth
+*.ckpt
+
+# Other
+*.bak
+*.old
