@@ -1,4 +1,23 @@
-Project Structure
+# Vision OCR to Excel
+
+A FastAPI project to **extract Bangla voter information from PDF files** and export it to Excel. The project uses **OCR + OpenAI GPT-5** for accurate text extraction and structuring.
+
+---
+
+## Features
+
+* Multi-page PDF support
+* Bangla + English OCR using **Tesseract**
+* GPT-5 parsing for structured voter info
+* Deduplication of extracted voters
+* Excel export of results
+* Handles large PDFs efficiently with batching
+
+---
+
+## Project Structure
+
+```
 vision-ocr-excel/
 ├── app/
 │   ├── main.py
@@ -16,37 +35,84 @@ vision-ocr-excel/
 ├── .env
 ├── requirements.txt
 └── README.md
+```
 
-Installation
+---
 
-Clone the repo:
+## Installation
 
+1. Clone the repository:
+
+```bash
 git clone <repo_url>
 cd vision-ocr-excel
+```
 
+2. Create a virtual environment:
 
-Create a virtual environment:
-
+```bash
 python3 -m venv venv
 source venv/bin/activate
+```
 
+3. Install Python dependencies:
 
-Install dependencies:
-
+```bash
 pip install -r requirements.txt
+```
 
+4. Install system dependencies:
 
-Install system dependencies:
-
+```bash
 sudo apt install tesseract-ocr tesseract-ocr-ben poppler-utils
+```
 
+5. Add your OpenAI API key in `.env`:
 
-Add your OpenAI API key in .env:
-
+```
 OPENAI_API_KEY=sk-xxxxxx
+```
 
-Usage
+---
+
+## Usage
 
 Start the FastAPI server:
 
-uvicorn app.main:app --reload# vision-ocr-excel
+```bash
+uvicorn app.main:app --reload
+```
+
+* Open API docs: `http://127.0.0.1:8000/docs`
+* Endpoint: `POST /api/v1/extract-voters` (upload a PDF)
+* Returns JSON with:
+
+  * `expected_blocks`: number of text blocks detected
+  * `extracted_voters`: number of voters extracted
+  * `download_url`: link to download Excel file
+
+---
+
+## Example Request
+
+```bash
+curl -X POST "http://127.0.0.1:8000/api/v1/extract-voters" \
+  -F "file=@voters.pdf"
+```
+
+Example response:
+
+```json
+{
+  "expected_blocks": 50,
+  "extracted_voters": 48,
+  "download_url": "/api/v1/download/voters_123abc.xlsx"
+}
+```
+
+---
+
+## Notes
+
+* Best results with **clean scanned PDFs**
+* Designed specifically for **Ban
